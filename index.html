@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Văn Hóa Cồng Chiêng Người Ê Đê</title>
+
+  <!-- Font kiểu mạng xã hội -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsive.css" />
+</head>
+
+<body>
+  <!-- App Shell -->
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-badge">🥁</div>
+        <div class="brand-text">
+          <div class="brand-title">Ê Đê Gong</div>
+          <div class="brand-sub">Social Museum</div>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <!-- Giữ nguyên liên kết -->
+        <a class="nav-link" href="#home">🏠 Trang chủ</a>
+        <a class="nav-link" href="#about">📚 Giới thiệu</a>
+        <a class="nav-link" href="#collection">🗂️ Bộ sưu tập</a>
+        <a class="nav-link" href="#add">➕ Thêm mới</a>
+        <a class="nav-link" href="#stats">📈 Thống kê</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="server-chip">
+          <span class="dot" id="serverDot"></span>
+          <span>Server:</span>
+          <span id="serverStatus">Đang kiểm tra...</span>
+        </div>
+        <div class="hint">Tip: mở bằng Live Server để tránh lỗi fetch.</div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+          <div class="page-title">
+            <div class="page-title-big">Văn Hóa Cồng Chiêng Người Ê Đê</div>
+            <div class="page-title-sub">Di sản văn hóa phi vật thể đại diện của nhân loại</div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="search-pill">
+            <span class="search-ico">🔎</span>
+            <!-- giữ ID searchInput để JS cũ vẫn chạy -->
+            <input id="searchInput" type="text" placeholder="Tìm theo tên / nguồn gốc..." />
+            <button class="primary-btn" id="openPostModal" type="button">➕ Đăng bài</button>
+          </div>
+
+          <select id="filterSound" class="select-pill">
+            <option value="">Tất cả âm thanh</option>
+            <option value="Trầm">Trầm</option>
+            <option value="Trung">Trung</option>
+            <option value="Cao">Cao</option>
+          </select>
+
+          <button class="primary-btn" onclick="loadData()">Tải lại</button>
+          <button class="ghost-btn" onclick="exportData()">Tải JSON</button>
+        </div>
+      </header>
+
+      <!-- GRID LAYOUT: feed + right panel -->
+      <div class="content">
+        <!-- FEED -->
+        <section class="feed">
+
+          <!-- HOME (giữ id) -->
+          <section id="home" class="card hero-card">
+            <div class="hero-left">
+              <div class="chip">✨ Không gian văn hóa Tây Nguyên</div>
+              <h1>Không gian văn hóa cồng chiêng — “feed” trưng bày số</h1>
+              <p>
+                Cồng chiêng gắn với lễ hội, tâm linh và cộng đồng. Trang này hoạt động như một mạng xã hội mini:
+                bạn có thể tìm kiếm, lọc, thêm mới, xem thống kê theo “âm thanh”.
+              </p>
+              <div class="hero-actions">
+                <a class="primary-btn" href="#collection">Xem bộ sưu tập</a>
+                <a class="ghost-btn" href="#add">Thêm cồng chiêng</a>
+              </div>
+            </div>
+
+            <div class="hero-right">
+              <div class="hero-metric">
+                <div class="hero-metric-num" id="totalGongs">0</div>
+                <div class="hero-metric-label">Tổng số cồng chiêng</div>
+              </div>
+              <div class="hero-metric">
+                <div class="hero-metric-num" id="avgAge">0</div>
+                <div class="hero-metric-label">Niên đại trung bình</div>
+              </div>
+              <div class="hero-blob"></div>
+            </div>
+          </section>
+
+          <!-- ABOUT (giữ id) -->
+          <section id="about" class="card">
+            <div class="card-head">
+              <h2>Giới thiệu</h2>
+              <div class="muted">Bản tóm tắt nhanh theo kiểu “profile card”</div>
+            </div>
+
+            <div class="about-grid">
+              <div class="mini-card">
+                <div class="mini-ico">🧭</div>
+                <div class="mini-title">Ý nghĩa</div>
+                <div class="mini-text">Gắn với lễ hội, tín ngưỡng, vòng đời cộng đồng người Ê Đê.</div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-ico">🛠️</div>
+                <div class="mini-title">Cấu tạo</div>
+                <div class="mini-text">Hợp kim đồng, mỗi chiếc có cao độ/âm sắc riêng.</div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-ico">🎶</div>
+                <div class="mini-title">Nghệ thuật</div>
+                <div class="mini-text">Hòa quyện con người – thiên nhiên trong không gian lễ hội.</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- COLLECTION (giữ id) -->
+          <section id="collection" class="card">
+            <div class="card-head">
+              <h2>Bộ sưu tập</h2>
+              <div class="muted">Dạng “feed cards” — có tìm kiếm & lọc</div>
+            </div>
+
+            <!-- giữ id gongList để JS render -->
+            <div id="gongList" class="gong-feed">
+              <div class="loading">Đang tải dữ liệu...</div>
+            </div>
+          </section>
+
+          <!-- ADD (giữ id) -->
+          <section id="add" class="card">
+            <div class="card-head">
+              <h2>Đăng bài mới</h2>
+              <div class="muted">Form theo kiểu mạng xã hội — gọn, rõ, dễ nhập</div>
+            </div>
+
+            <!-- giữ id addGongForm để JS submit -->
+            <form id="addGongForm" class="post-form">
+              <div class="form-row">
+                <div class="field">
+                  <label>Tên cồng chiêng</label>
+                  <input type="text" id="name" placeholder="VD: Cồng Mẹ" required />
+                </div>
+                <div class="field">
+                  <label>Nguồn gốc</label>
+                  <input type="text" id="origin" placeholder="VD: Buôn Ma Thuột, Đắk Lắk" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label>Niên đại (năm)</label>
+                  <input type="number" id="age" placeholder="VD: 120" required />
+                </div>
+                <div class="field">
+                  <label>Âm thanh</label>
+                  <select id="sound" required>
+                    <option value="">-- Chọn --</option>
+                    <option value="Trầm">Trầm</option>
+                    <option value="Trung">Trung</option>
+                    <option value="Cao">Cao</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Mô tả</label>
+                <textarea id="description" rows="4" placeholder="Viết vài dòng mô tả..." required></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Đăng lên bộ sưu tập</button>
+                <a class="ghost-btn" href="#collection">Xem ngay</a>
+              </div>
+            </form>
+          </section>
+
+        </section>
+
+        <!-- RIGHT PANEL -->
+        <aside class="panel">
+          <section id="stats" class="card panel-card">
+            <div class="card-head">
+              <h2>Thống kê</h2>
+              <div class="muted">Realtime từ API</div>
+            </div>
+
+            <!-- giữ id statsContainer/chartContainer để JS cũ -->
+            <div id="statsContainer" class="stats-stack">
+              <div class="stat-tile">
+                <div class="stat-label">Tổng số</div>
+                <div class="stat-value" id="totalGongsSide">0</div>
+              </div>
+              <div class="stat-tile">
+                <div class="stat-label">Niên đại TB</div>
+                <div class="stat-value" id="avgAgeSide">0</div>
+              </div>
+            </div>
+
+            <div id="chartContainer" class="chart-box"></div>
+          </section>
+
+          <section class="card panel-card">
+            <div class="card-head">
+              <h2>Gợi ý</h2>
+              <div class="muted">Những mẹo nhỏ để dùng nhanh</div>
+            </div>
+            <ul class="tips">
+              <li>Gõ tìm kiếm ở thanh trên để lọc tức thì.</li>
+              <li>Chọn “Âm thanh” để xem phân nhóm Trầm/Trung/Cao.</li>
+              <li>Dùng “Tải JSON” để xuất dữ liệu.</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const API_URL = 'http://127.0.0.1:5000/api';
+    let allGongs = [];
+
+    // Sidebar mobile toggle
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn?.addEventListener('click', () => document.body.classList.toggle('sidebar-open'));
+
+    // Kiểm tra kết nối server
+    async function checkServerStatus() {
+      try {
+        const response = await fetch(API_URL.replace('/api', '/'));
+        if (response.ok) {
+          const s = document.getElementById('serverStatus');
+          const dot = document.getElementById('serverDot');
+          s.textContent = '✅ Đang hoạt động';
+          s.style.color = 'inherit';
+          if (dot) dot.classList.add('on');
+        }
+      } catch (error) {
+        const s = document.getElementById('serverStatus');
+        const dot = document.getElementById('serverDot');
+        s.textContent = '❌ Không kết nối được';
+        s.style.color = 'inherit';
+        if (dot) dot.classList.remove('on');
+      }
+    }
+
+    // Tải dữ liệu từ server
+    async function loadData() {
+      try {
+        const response = await fetch(`${API_URL}/gongs`);
+        const data = await response.json();
+        allGongs = data.gongs || data;
+        displayGongs(allGongs);
+        loadStats();
+      } catch (error) {
+        document.getElementById('gongList').innerHTML =
+          '<div class="error">❌ Không thể kết nối đến server. Vui lòng chạy: <b>python app.py</b></div>';
+        console.error('Error:', error);
+      }
+    }
+
+    // Hiển thị danh sách cồng chiêng (feed style + an toàn dữ liệu thiếu field)
+    function displayGongs(gongs) {
+      const container = document.getElementById('gongList');
+      if (!Array.isArray(gongs) || gongs.length === 0) {
+        container.innerHTML = '<div class="empty">Chưa có dữ liệu. Hãy “Đăng bài mới” ở mục Thêm mới!</div>';
+        return;
+      }
+
+      container.innerHTML = gongs.map(gong => {
+        const id = gong?._id || '';
+        const name = gong?.name ?? '(Không có tên)';
+        const origin = gong?.origin ?? '(Không rõ nguồn gốc)';
+        const age = gong?.age ?? 'N/A';
+        const sound = gong?.sound ?? 'Không xác định';
+        const desc = gong?.description ?? '';
+
+        const badgeClass = (sound || '').toLowerCase();
+
+        return `
+          <article class="post">
+            <div class="post-head">
+              <div class="avatar">🥁</div>
+              <div class="post-meta">
+                <div class="post-title">${name}</div>
+                <div class="post-sub">${origin} • <span class="pill pill-${badgeClass}">${sound}</span></div>
+              </div>
+              <div class="post-age">${age} năm</div>
+            </div>
+
+            <div class="post-body">${desc}</div>
+
+            <div class="post-actions">
+              <button class="action-btn" onclick="deleteGong('${id}')">🗑️ Xóa</button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Thêm cồng chiêng mới
+    document.getElementById('addGongForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const gongData = {
+        name: document.getElementById('name').value,
+        origin: document.getElementById('origin').value,
+        age: parseInt(document.getElementById('age').value),
+        description: document.getElementById('description').value,
+        sound: document.getElementById('sound').value
+      };
+
+      try {
+        const response = await fetch(`${API_URL}/gongs`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(gongData)
+        });
+
+        if (response.ok) {
+          alert('✅ Đã thêm cồng chiêng thành công!');
+          document.getElementById('addGongForm').reset();
+          loadData();
+          document.getElementById('collection').scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert('❌ Có lỗi xảy ra. Vui lòng thử lại!');
+        }
+      } catch (error) {
+        alert('❌ Không thể kết nối đến server!');
+        console.error('Error:', error);
+      }
+    });
+
+    // Xóa cồng chiêng
+    async function deleteGong(id) {
+      if (!confirm('Bạn có chắc muốn xóa cồng chiêng này?')) return;
+
+      try {
+        const response = await fetch(`${API_URL}/gongs/${id}`, { method: 'DELETE' });
+        if (response.ok) {
+          loadData();
+        } else {
+          alert('❌ Có lỗi xảy ra khi xóa!');
+        }
+      } catch (error) {
+        alert('❌ Không thể kết nối đến server!');
+        console.error('Error:', error);
+      }
+    }
+
+    // Tìm kiếm và lọc (an toàn undefined)
+    document.getElementById('searchInput').addEventListener('input', filterGongs);
+    document.getElementById('filterSound').addEventListener('change', filterGongs);
+
+    function filterGongs() {
+      const searchTerm = (document.getElementById('searchInput').value || '').toLowerCase();
+      const soundFilter = document.getElementById('filterSound').value;
+
+      const filtered = allGongs.filter(gong => {
+        const name = (gong?.name || '').toLowerCase();
+        const origin = (gong?.origin || '').toLowerCase();
+        const sound = gong?.sound || '';
+
+        const matchSearch = name.includes(searchTerm) || origin.includes(searchTerm);
+        const matchSound = !soundFilter || sound === soundFilter;
+        return matchSearch && matchSound;
+      });
+
+      displayGongs(filtered);
+    }
+
+    // Tải xuống dữ liệu
+    async function exportData() {
+      try {
+        const response = await fetch(`${API_URL}/export`);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'cong_chieng_ede.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } catch (error) {
+        alert('❌ Không thể tải xuống dữ liệu!');
+        console.error('Error:', error);
+      }
+    }
+
+    // Tải thống kê
+    async function loadStats() {
+      try {
+        const response = await fetch(`${API_URL}/stats`);
+        const data = await response.json();
+
+        if (data.success) {
+          // hero
+          document.getElementById('totalGongs').textContent = data.stats.total_gongs;
+          document.getElementById('avgAge').textContent =
+            data.stats.avg_age ? Math.round(data.stats.avg_age) : 'N/A';
+
+          // side tiles
+          document.getElementById('totalGongsSide').textContent = data.stats.total_gongs;
+          document.getElementById('avgAgeSide').textContent =
+            data.stats.avg_age ? Math.round(data.stats.avg_age) + ' năm' : 'N/A';
+
+          displayChart(data.stats.by_sound);
+        }
+      } catch (error) {
+        console.error('Error loading stats:', error);
+      }
+    }
+
+    // Biểu đồ đơn giản (giữ nguyên logic cũ)
+    function displayChart(soundStats) {
+      const container = document.getElementById('chartContainer');
+      if (!soundStats || soundStats.length === 0) {
+        container.innerHTML = '<div class="muted">Chưa có dữ liệu thống kê</div>';
+        return;
+      }
+
+      const max = Math.max(...soundStats.map(s => s.count));
+      container.innerHTML =
+        '<div class="chart-title">Phân bố theo âm thanh</div>' +
+        soundStats.map(item => `
+          <div class="chart-row">
+            <div class="chart-name">${item._id || 'Không xác định'}</div>
+            <div class="chart-bar">
+              <div class="chart-fill" style="width:${(item.count / max) * 100}%"></div>
+            </div>
+            <div class="chart-num">${item.count}</div>
+          </div>
+        `).join('');
+    }
+
+    // Khởi động
+    window.addEventListener('load', () => {
+      checkServerStatus();
+      loadData();
+    });
+  </script>
+</body>
+</html>
