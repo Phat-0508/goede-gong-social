@@ -1,0 +1,499 @@
+/* responsive.css - CSS cho responsive design */
+
+/* Tablet và màn hình vừa */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        padding: 10px 0;
+    }
+
+    nav li {
+        margin: 5px 10px;
+    }
+
+    .hero h2 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .about-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .gong-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    main {
+        padding: 30px 20px;
+        margin: 20px auto;
+    }
+
+    .section h2 {
+        font-size: 1.7em;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    #searchInput,
+    #filterSound,
+    .filter-bar button {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .chart-label {
+        width: 80px;
+        font-size: 0.9em;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 20px 0;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 0;
+    }
+
+    nav li {
+        margin: 4px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    main {
+        padding: 20px 15px;
+        margin: 15px 10px;
+        border-radius: 10px;
+    }
+
+    .section {
+        margin-bottom: 35px;
+    }
+
+    .section h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .hero {
+        padding: 25px 20px;
+    }
+
+    .hero h2 {
+        font-size: 1.5em;
+        margin-bottom: 12px;
+    }
+
+    .hero p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .about-card {
+        padding: 20px;
+    }
+
+    .about-card h3 {
+        font-size: 1.3em;
+    }
+
+    .filter-bar {
+        gap: 10px;
+    }
+
+    .filter-bar button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+
+    .gong-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .gong-card {
+        padding: 20px;
+    }
+
+    .gong-icon {
+        font-size: 2.5em;
+    }
+
+    .gong-card h3 {
+        font-size: 1.3em;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .btn-edit,
+    .btn-delete {
+        width: 100%;
+    }
+
+    .add-form {
+        padding: 25px 20px;
+    }
+
+    .form-group label {
+        font-size: 1em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .btn-submit {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-card h3 {
+        font-size: 2.5em;
+    }
+
+    .stat-card p {
+        font-size: 1em;
+    }
+
+    .chart-container {
+        padding: 20px 15px;
+    }
+
+    .chart-label {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .chart-fill {
+        display: block;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    footer {
+        padding: 15px 10px;
+        font-size: 0.9em;
+    }
+
+    .server-status {
+        font-size: 0.85em;
+    }
+}
+
+/* Mobile nhỏ */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.4em;
+    }
+
+    .subtitle {
+        font-size: 0.85em;
+    }
+
+    nav a {
+        font-size: 0.95em;
+        padding: 8px 15px;
+    }
+
+    main {
+        padding: 15px 10px;
+        margin: 10px 5px;
+    }
+
+    .section h2 {
+        font-size: 1.3em;
+    }
+
+    .hero {
+        padding: 20px 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.3em;
+    }
+
+    .hero p {
+        font-size: 0.95em;
+    }
+
+    .about-card {
+        padding: 15px;
+    }
+
+    .about-card h3 {
+        font-size: 1.2em;
+    }
+
+    .about-card p {
+        font-size: 0.95em;
+    }
+
+    #searchInput,
+    #filterSound {
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+
+    .filter-bar button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .gong-card {
+        padding: 15px;
+    }
+
+    .gong-icon {
+        font-size: 2em;
+    }
+
+    .gong-card h3 {
+        font-size: 1.2em;
+    }
+
+    .gong-card p {
+        font-size: 0.95em;
+    }
+
+    .badge {
+        padding: 3px 10px;
+        font-size: 0.85em;
+    }
+
+    .btn-edit,
+    .btn-delete {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .add-form {
+        padding: 20px 15px;
+    }
+
+    .stat-card h3 {
+        font-size: 2em;
+    }
+
+    .chart-container h3 {
+        font-size: 1.1em;
+    }
+
+    .chart-fill {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+/* Landscape orientation */
+@media (max-height: 600px) and (orientation: landscape) {
+    header {
+        padding: 15px 0;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav {
+        position: static;
+    }
+
+    nav ul {
+        padding: 8px 0;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .section {
+        margin-bottom: 25px;
+    }
+
+    .gong-icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+    }
+
+    header,
+    nav,
+    footer,
+    .filter-bar,
+    .card-actions,
+    .add-form,
+    .btn-submit {
+        display: none;
+    }
+
+    main {
+        box-shadow: none;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .gong-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .section h2 {
+        color: #000;
+        border-bottom: 2px solid #000;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    body {
+        background: #fff;
+        color: #000;
+    }
+
+    .gong-card,
+    .about-card,
+    .add-form {
+        border: 2px solid #000;
+    }
+
+    .btn-submit,
+    .filter-bar button {
+        background: #000;
+        color: #fff;
+    }
+
+    nav a:hover {
+        background: #000;
+        color: #fff;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+
+    main {
+        background: #2c3e50;
+        color: #ecf0f1;
+    }
+
+    .section h2 {
+        color: #3498db;
+    }
+
+    .gong-card,
+    .about-card {
+        background: #34495e;
+        border-color: #4a5f7f;
+        color: #ecf0f1;
+    }
+
+    .gong-card p,
+    .about-card p {
+        color: #bdc3c7;
+    }
+
+    .add-form {
+        background: #34495e;
+        color: #ecf0f1;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        background: #2c3e50;
+        color: #ecf0f1;
+        border-color: #4a5f7f;
+    }
+
+    .chart-container {
+        background: #34495e;
+    }
+}
