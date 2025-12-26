@@ -9,12 +9,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="responsive.css" />
 </head>
 
 <body>
+    <div class="page-link">
+    <a href="download.html" class="btn-link">
+      📥 tải mô hình 3D Ở ĐÂY !!!
+    </a>
+  </div>
+
   <!-- App Shell -->
   <div class="app">
     <!-- SIDEBAR -->
@@ -355,21 +361,36 @@
     });
 
     // Xóa cồng chiêng
-    async function deleteGong(id) {
-      if (!confirm('Bạn có chắc muốn xóa cồng chiêng này?')) return;
+   async function deleteGong(id) {
+  if (!confirm("Bạn có chắc muốn xóa cồng chiêng này?")) return;
 
-      try {
-        const response = await fetch(`${API_URL}/gongs/${id}`, { method: 'DELETE' });
-        if (response.ok) {
-          loadData();
-        } else {
-          alert('❌ Có lỗi xảy ra khi xóa!');
-        }
-      } catch (error) {
-        alert('❌ Không thể kết nối đến server!');
-        console.error('Error:', error);
+  try {
+    const response = await fetch(`${API_URL}/gongs/${id}`, {
+      method: "DELETE",
+      headers: {
+        "X-ADMIN-KEY": "ede-gong-admin-2025"
       }
+    });
+
+    if (response.status === 403) {
+      alert("❌ Bạn không có quyền xóa!");
+      return;
     }
+
+    if (!response.ok) {
+      alert("❌ Xóa thất bại!");
+      return;
+    }
+
+    alert("✅ Đã xóa thành công!");
+    loadData();
+
+  } catch (error) {
+    console.error(error);
+    alert("❌ Lỗi kết nối server!");
+  }
+}
+
 
     // Tìm kiếm và lọc (an toàn undefined)
     document.getElementById('searchInput').addEventListener('input', filterGongs);
@@ -462,8 +483,5 @@
       loadData();
     });
   </script>
-  <!-- force redeploy -->
-
 </body>
 </html>
-

@@ -355,3 +355,24 @@ body{
   .topbar-right .search-pill input{width:160px}
   .form-row{grid-template-columns:1fr}
 }
+.page-link {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.btn-link {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
